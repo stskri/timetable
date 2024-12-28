@@ -1,1 +1,14 @@
 <h1>schedules#index</h1>
+<% if user_signed_in? %>
+  <%= current_user.name %>
+  <p>ログインしています</p>
+<% end %>
+<p>
+  <%= link_to "ユーザー登録", new_user_registration_path %>
+</p>
+<p>
+  <%= link_to "ユーザーログイン", new_user_session_path %>
+</p>
+<p>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+</p>
