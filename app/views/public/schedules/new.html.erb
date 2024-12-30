@@ -1,0 +1,7 @@
+<%= form_with model: @schedule do |f| %>
+  <span>スケジュール名</span>
+  <%= f.text_field :name %>
+  <span>説明</span>
+  <%= f.text_field :explanation %>
+  <%= f.submit "作成" %>
+<% end %>
