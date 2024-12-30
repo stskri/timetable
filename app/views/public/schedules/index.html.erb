@@ -18,3 +18,7 @@
 <p>
   <%= link_to "作成", new_schedule_path %>
 </p>
+<p>一覧</p>
+<%= @schedules.each do |schedule| %>
+  <%= schedule.name %>
+<% end %>

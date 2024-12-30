@@ -9,6 +9,7 @@ class Public::SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
+    @schedule.user_id = current_user.id
     if @schedule.save
       redirect_to root_path, notice: 'スケジュールを作成しました'
     else
