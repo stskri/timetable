@@ -20,5 +20,5 @@
 </p>
 <p>一覧</p>
 <%= @schedules.each do |schedule| %>
-  <%= schedule.name %>
+  <%= link_to schedule.name, schedule_path(schedule) %>
 <% end %>
