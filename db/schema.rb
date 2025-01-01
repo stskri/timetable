@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2024_12_26_125831) do
     t.integer "schedule_id", null: false
     t.integer "subject_id", null: false
     t.integer "day_of_week", null: false
-    t.integer "turn", null: false
+    t.integer "period", null: false
     t.string "teacher_name"
     t.time "start_time"
     t.time "end_time"
