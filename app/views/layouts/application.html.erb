@@ -15,6 +15,11 @@
       <%= render "layouts/header" %>
     </header>
     <div class="col" style="flex-grow: 1; height: 80vh;">
+      <% flash.each do |key, message| %>
+        <div class="mb-0 alert alert-<%= key == 'notice' ? 'success' : 'danger' %> text-center">
+          <%= message %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
     <footer style="height: 10vh;">

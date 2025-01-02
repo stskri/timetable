@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "schedules#index"
     resources :schedules
+    resources :lessons
   end
 
   namespace :admin do

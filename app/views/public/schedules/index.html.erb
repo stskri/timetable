@@ -1,8 +1,5 @@
 <h1>schedules#index</h1>
-
-<h4>スケジュール</h4>
-  <%= link_to "作成", new_schedule_path %>
-<p>一覧</p>
+<h3>一覧</h3>
 <%= @schedules.each do |schedule| %>
   <p>
     <%= link_to schedule.name, schedule_path(schedule) %>

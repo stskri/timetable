@@ -12,18 +12,22 @@ schedules#show
             <thead>
               <tr>
                 <th>Period</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span class="font-weight-bold">1st</span></td>
-                <td></td>
+                <td>
+                  <%= link_to new_lesson_path do %>
+                    <i class="fa-regular fa-square-plus"></i>
+                  <% end %>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
