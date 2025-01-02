@@ -1,1 +1,15 @@
-<header class="d-flex justify-content-center">ヘッダー</header>
+<header class="d-flex justify-content-center">
+  <% if user_signed_in? %>
+    <%= current_user.name %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "ユーザー登録", new_user_registration_path %>
+    <%= link_to "ユーザーログイン", new_user_session_path %>
+  <% end %>
+
+  <% flash.each do |key, message| %>
+    <div class="mb-0 alert alert-<%= key == 'notice' ? 'success' : 'danger' %> text-center">
+      <%= message %>
+    </div>
+  <% end %>
+</header>

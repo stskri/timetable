@@ -1,22 +1,7 @@
 <h1>schedules#index</h1>
-<% if user_signed_in? %>
-  <%= current_user.name %>
-  <p>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </p>
-<% else %>
-  <p>
-  <%= link_to "ユーザー登録", new_user_registration_path %>
-</p>
-<p>
-  <%= link_to "ユーザーログイン", new_user_session_path %>
-</p>
-<% end %>
 
 <h4>スケジュール</h4>
-<p>
   <%= link_to "作成", new_schedule_path %>
-</p>
 <p>一覧</p>
 <%= @schedules.each do |schedule| %>
   <p>
