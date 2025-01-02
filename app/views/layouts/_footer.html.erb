@@ -1,1 +1,7 @@
-<footer class="d-flex justify-content-center">フッター</footer>
+<div class="d-flex justify-content-center pb-4">
+  <% if user_signed_in? %>
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-house"></i>
+    <% end %>
+  <% end %>
+</div>
