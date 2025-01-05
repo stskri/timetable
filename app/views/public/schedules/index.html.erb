@@ -5,3 +5,9 @@
     <%= link_to schedule.name, schedule_path(schedule) %>
   </p>
 <% end %>
+
+<% Subject.all.each do |subject| %>
+  <div>
+    <span style="color: <%= subject.color %>;"><%= subject.name %></span>
+  </div>
+<% end %>
