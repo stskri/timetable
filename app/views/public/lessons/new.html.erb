@@ -1,1 +1,7 @@
 <h1>lessons#new</h1>
+<%= form_with model: @lesson do |f| %>
+  <div>
+    <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, include_blank: "選択してください" %>
+  </div>
+  <%= f.submit "確定" %>
+<% end %>
