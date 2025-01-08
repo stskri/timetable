@@ -1,5 +1,5 @@
 <h1>lessons#new</h1>
-<%= form_with model: @lesson do |f| %>
+<%= form_with model: @lesson, url: schedule_lessons_path(@schedule) do |f| %>
   <div>
     <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, include_blank: "選択してください" %>
   </div>

@@ -2,6 +2,7 @@ class Public::LessonsController < ApplicationController
   def new
     @subjects = Subject.all
     @lesson = Lesson.new
+    @schedule = Schedule.find(params[:schedule_id])
   end
 
   def create
