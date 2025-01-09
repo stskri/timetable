@@ -11,6 +11,10 @@ class Public::SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
 
+  def edit
+    @schedule = Schedule.find(params[:id])
+  end
+
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id

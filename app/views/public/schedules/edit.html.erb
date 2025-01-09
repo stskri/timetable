@@ -1,4 +1,4 @@
-schedules#show
+schedules#edit
 <div class="container">
   <div class="row">
     <div class="col">
@@ -23,7 +23,11 @@ schedules#show
             <tbody>
               <tr>
                 <td><span class="font-weight-bold">1st</span></td>
-                <td></td>
+                <td>
+                  <%= link_to new_schedule_lesson_path(@schedule) do %>
+                    <i class="fa-regular fa-square-plus"></i>
+                  <% end %>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -77,7 +81,7 @@ schedules#show
               </tr>
             </tbody>
           </table>
-          <%= link_to "編集", edit_schedule_path(@schedule) %>
+          <%= link_to "確定", schedule_path(@schedule) %>
         </div>
       </div>
     </div>
