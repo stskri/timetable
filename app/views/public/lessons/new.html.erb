@@ -3,7 +3,7 @@
   <div>
     <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, include_blank: "選択してください" %>
   </div>
-  <%= f.hidden_field :day_of_week, value: 1 %>
-  <%= f.hidden_field :period, value: 1 %>
+  <%= f.hidden_field :day_of_week, value: params[:day_of_week].to_i %>
+  <%= f.hidden_field :period, value: params[:period].to_i %>
   <%= f.submit "確定" %>
 <% end %>

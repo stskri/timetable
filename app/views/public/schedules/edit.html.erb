@@ -21,64 +21,22 @@ schedules#edit
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><span class="font-weight-bold">1st</span></td>
-                <td>
-                  <%= link_to new_schedule_lesson_path(@schedule) do %>
-                    <i class="fa-regular fa-square-plus"></i>
+              <% periods = ["1st", "2nd", "3rd", "4th", "5th", "6th"] %>
+              <% periods.each do |period| %>
+                <tr>
+                  <td><%= period %></td>
+                  <% cols = Array.new(6) %>
+                  <% cols.each do %>
+                    <% day_of_week = 1 %>
+                    <td>
+                      <%= link_to new_schedule_lesson_path(@schedule, day_of_week: day_of_week, period: 1) do %>
+                      <i class="fa-regular fa-square-plus"></i>
+                    <% end %>
+                    </td>
+                    <% day_of_week += 1 %>
                   <% end %>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">2nd</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">3rd</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">4th</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">5th</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">6th</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+                </tr>
+              <% end %>
             </tbody>
           </table>
           <%= link_to "確定", schedule_path(@schedule) %>
