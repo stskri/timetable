@@ -23,7 +23,13 @@ schedules#show
             <tbody>
               <tr>
                 <td><span class="font-weight-bold">1st</span></td>
-                <td></td>
+                <td>
+                  <% if @schedule.lessons.exists?(day_of_week: 1, period: 1) %>
+                    <% lesson = @schedule.lessons.find_by(day_of_week: 1, period: 1) %>
+                    <% subject = Subject.find(lesson.subject_id) %>
+                    <div style="color: <%= subject.color %>;"><%= subject.name %></div>
+                  <% end %>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
