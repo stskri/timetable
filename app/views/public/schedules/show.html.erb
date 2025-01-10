@@ -32,7 +32,11 @@ schedules#show
                     <td>
                       <% lessons = @schedule.lessons.includes(:subject).where(day_of_week: day_of_week, period: period) %>
                       <% lessons.each do |lesson| %>
-                        <div style="color: <%= lesson.subject.color %>;"><%= lesson.subject.name %></div>
+                        <div style="color: <%= lesson.subject.color %>;">
+                          <%= link_to edit_schedule_lesson_path(lesson.schedule_id, lesson), style: "color: inherit;" do %>
+                            <%= lesson.subject.name %>
+                          <% end %>
+                        </div>
                       <% end %>
                     </td>
                   <% end %>

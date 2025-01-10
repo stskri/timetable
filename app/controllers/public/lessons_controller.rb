@@ -5,6 +5,12 @@ class Public::LessonsController < ApplicationController
     @schedule = Schedule.find(params[:schedule_id])
   end
 
+  def edit
+    @subjects = Subject.all
+    @lesson = Lesson.find(params[:id])
+    @schedule = Schedule.find(params[:schedule_id])
+  end
+
   def create
     schedule = Schedule.find(params[:schedule_id])
     lesson = schedule.lessons.build(lesson_params)
@@ -14,6 +20,14 @@ class Public::LessonsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def update
+    lesson = Lesson.find(params[:id])
+    lesson.subject_id = params[:lesson][:selected_subject_id].to_i
+    if lesson.update(lesson_params)
+      redirect_to root_path
     end
   end
 
