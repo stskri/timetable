@@ -23,8 +23,9 @@ schedules#show
 
             <tbody>
               <% rows = ["1st", "2nd", "3rd", "4th", "5th", "6th"] %>
-              <% rows.each_with_index do |row, index| %>
-                <% period = index + 1 %>
+              <% period = 0 %>
+              <% rows.each do |row| %>
+                <% period +=  1 %>
                 <tr>
                   <td><%= row %></td>
                   <% (1..6).each do |day_of_week| %>
