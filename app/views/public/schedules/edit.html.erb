@@ -21,19 +21,18 @@ schedules#edit
               </tr>
             </thead>
             <tbody>
-              <% periods = ["1st", "2nd", "3rd", "4th", "5th", "6th"] %>
-              <% periods.each do |period| %>
+              <% rows = ["1st", "2nd", "3rd", "4th", "5th", "6th"] %>
+              <% period = 0 %>
+              <% rows.each do |row| %>
+                <% period +=  1 %>
                 <tr>
-                  <td><%= period %></td>
-                  <% cols = Array.new(6) %>
-                  <% cols.each do %>
-                    <% day_of_week = 1 %>
+                  <td><%= row %></td>
+                  <% (1..6).each do |day_of_week| %>
                     <td>
-                      <%= link_to new_schedule_lesson_path(@schedule, day_of_week: day_of_week, period: 1) do %>
-                      <i class="fa-regular fa-square-plus"></i>
-                    <% end %>
+                      <%= link_to new_schedule_lesson_path(@schedule, day_of_week: day_of_week, period: period) do %>
+                        <i class="fa-regular fa-square-plus"></i>
+                      <% end %>
                     </td>
-                    <% day_of_week += 1 %>
                   <% end %>
                 </tr>
               <% end %>

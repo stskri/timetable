@@ -20,68 +20,25 @@ schedules#show
                 <th>土</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr>
-                <td><span class="font-weight-bold">1st</span></td>
-                <td>
-                  <% if @schedule.lessons.exists?(day_of_week: 1, period: 1) %>
-                    <% lesson = @schedule.lessons.find_by(day_of_week: 1, period: 1) %>
-                    <% subject = Subject.find(lesson.subject_id) %>
-                    <div style="color: <%= subject.color %>;"><%= subject.name %></div>
+              <% rows = ["1st", "2nd", "3rd", "4th", "5th", "6th"] %>
+              <% rows.each_with_index do |row, index| %>
+                <% period = index + 1 %>
+                <tr>
+                  <td><%= row %></td>
+                  <% (1..6).each do |day_of_week| %>
+                    <td>
+                      <% lessons = @schedule.lessons.includes(:subject).where(day_of_week: day_of_week, period: period) %>
+                      <% lessons.each do |lesson| %>
+                        <div style="color: <%= lesson.subject.color %>;"><%= lesson.subject.name %></div>
+                      <% end %>
+                    </td>
                   <% end %>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">2nd</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">3rd</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">4th</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">5th</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><span class="font-weight-bold">6th</span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+                </tr>
+              <% end %>
             </tbody>
+
           </table>
           <%= link_to "編集", edit_schedule_path(@schedule) %>
         </div>
