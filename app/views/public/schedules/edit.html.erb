@@ -29,8 +29,17 @@ schedules#edit
                   <td><%= row %></td>
                   <% (1..6).each do |day_of_week| %>
                     <td>
-                      <%= link_to new_schedule_lesson_path(@schedule, day_of_week: day_of_week, period: period) do %>
-                        <i class="fa-regular fa-square-plus"></i>
+                      <% lessons = @schedule.lessons.includes(:subject).where(day_of_week: day_of_week, period: period) %>
+                      <% if lessons.exists? %>
+                        <% lessons.each do |lesson| %>
+                          <%= link_to edit_schedule_lesson_path(@schedule.id, lesson), style: "color: inherit;" do %>
+                            <%= lesson.subject.name %>
+                          <% end %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to new_schedule_lesson_path(@schedule, day_of_week: day_of_week, period: period) do %>
+                          <i class="fa-regular fa-square-plus"></i>
+                        <% end %>
                       <% end %>
                     </td>
                   <% end %>
