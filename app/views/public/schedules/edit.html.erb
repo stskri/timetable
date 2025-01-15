@@ -32,7 +32,7 @@ schedules#edit
                       <% lessons = @schedule.lessons.includes(:subject).where(day_of_week: day_of_week, period: period) %>
                       <% if lessons.exists? %>
                         <% lessons.each do |lesson| %>
-                          <%= link_to edit_schedule_lesson_path(@schedule.id, lesson), style: "color: inherit;" do %>
+                          <%= link_to edit_schedule_lesson_path(@schedule.id, lesson), style: "color: #{lesson.subject.color};" do %>
                             <%= lesson.subject.name %>
                           <% end %>
                         <% end %>
