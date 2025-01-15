@@ -1,7 +1,7 @@
 <h1>lessons#edit</h1>
 <%= form_with model: @lesson, url: schedule_lesson_path(@schedule, @lesson), method: :patch do |f| %>
   <div>
-    <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, include_blank: "選択してください" %>
+    <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, include_blank: "選択してください", selected: @lesson.subject_id %>
   </div>
   <%= f.submit "確定" %>
 <% end %>
