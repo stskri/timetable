@@ -24,10 +24,11 @@ class Public::LessonsController < ApplicationController
   end
 
   def update
+    schedule = Schedule.find(params[:schedule_id])
     lesson = Lesson.find(params[:id])
     lesson.subject_id = params[:lesson][:selected_subject_id].to_i
     if lesson.update(lesson_params)
-      redirect_to root_path
+      redirect_to schedule_path(schedule)
     end
   end
 
