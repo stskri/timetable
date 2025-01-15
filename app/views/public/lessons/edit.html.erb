@@ -5,3 +5,5 @@
   </div>
   <%= f.submit "確定" %>
 <% end %>
+
+<%= link_to "削除", schedule_lesson_path(@schedule, @lesson), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "text-danger" %>

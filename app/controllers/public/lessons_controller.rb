@@ -17,7 +17,7 @@ class Public::LessonsController < ApplicationController
     lesson.subject_id = params[:lesson][:selected_subject_id].to_i
     lesson.schedule_id = schedule.id
     if lesson.save
-      redirect_to schedule_path(schedule)
+      redirect_to schedule_path(schedule), notice: '授業の登録に成功しました'
     else
       redirect_to new_schedule_lesson_path(schedule), alert: '授業の登録に失敗しました'
     end
@@ -31,6 +31,14 @@ class Public::LessonsController < ApplicationController
       redirect_to schedule_path(schedule), notice: '授業の更新に成功しました'
     else
       redirect_to edit_schedule_lesson_path(schedule), alert: '授業の更新に失敗しました'
+    end
+  end
+
+  def destroy
+    schedule = Schedule.find(params[:schedule_id])
+    lesson = Lesson.find(params[:id])
+    if lesson.destroy
+      redirect_to schedule_path(schedule)
     end
   end
 

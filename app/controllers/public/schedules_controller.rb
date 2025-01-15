@@ -21,7 +21,7 @@ class Public::SchedulesController < ApplicationController
     if @schedule.save
       redirect_to schedule_path(@schedule), notice: 'スケジュールを作成しました'
     else
-      redirect_to root_path, alert: 'スケジュールの作成に失敗しました'
+      redirect_to new_schedule_path, alert: 'スケジュールの作成に失敗しました'
     end
   end
 
