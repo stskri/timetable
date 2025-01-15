@@ -19,7 +19,7 @@ class Public::LessonsController < ApplicationController
     if lesson.save
       redirect_to schedule_path(schedule), notice: '授業の登録に成功しました'
     else
-      redirect_to new_schedule_lesson_path(schedule), alert: '授業の登録に失敗しました'
+      redirect_to request.referer, alert: '授業の登録に失敗しました'
     end
   end
 
