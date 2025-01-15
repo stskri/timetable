@@ -17,9 +17,9 @@ class Public::LessonsController < ApplicationController
     lesson.subject_id = params[:lesson][:selected_subject_id].to_i
     lesson.schedule_id = schedule.id
     if lesson.save
-      redirect_to root_path
+      redirect_to schedule_path(schedule)
     else
-      render :new
+      redirect_to root_path
     end
   end
 
