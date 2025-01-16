@@ -1,7 +1,12 @@
 class Public::SchedulesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
 
   def index
+    # public/schedules_pathをroot_pathに指定、未ログインユーザーの場合はログインページへ
+    # 「ログインして下さい」のエラーメッセージを表示しないため、 before_action :authenticate_user! ではなく明示的にsign_inページへリダイレクトさせている
+    unless user_signed_in?
+      redirect_to new_user_session_path and return
+    end
     @schedules = Schedule.all
   end
 
