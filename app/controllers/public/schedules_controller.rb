@@ -1,5 +1,10 @@
 class Public::SchedulesController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :dummy]
+
+  # 新規登録画面で登録失敗した際にURLが/usersとなり、リロードするとRouting Errorが表示されてしまうため、routesにget 'users' => 'schedules#dummy'を記述している
+  def dummy
+    redirect_to new_user_registration_path
+  end
 
   def index
     # public/schedules_pathをroot_pathに指定、未ログインユーザーの場合はログインページへ
