@@ -1,4 +1,6 @@
 class Public::LessonsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @subjects = Subject.all
     @lesson = Lesson.new

@@ -1,13 +1,7 @@
 <h1>schedules#index</h1>
 <h3>一覧</h3>
-<%= @schedules.each do |schedule| %>
+<% @schedules.each do |schedule| %>
   <p>
     <%= link_to schedule.name, schedule_path(schedule) %>
   </p>
-<% end %>
-
-<% Subject.all.each do |subject| %>
-  <div>
-    <span style="color: <%= subject.color %>;"><%= subject.name %></span>
-  </div>
 <% end %>
