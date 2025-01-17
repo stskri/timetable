@@ -7,6 +7,7 @@
             <th></th>
             <th>時間割</th>
             <th>説明</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
               <td><strong><%= schedule_count %></strong></td>
               <td><%= link_to schedule.name, schedule_path(schedule) %></td>
               <td><%= schedule.explanation %></td>
+              <td><%= link_to "削除", schedule_path(schedule), method: :delete, data: { confirm: '本当に消しますか？'}, class: "btn-sm btn-danger" %></td>
             </tr>
             <% schedule_count += 1 %>
           <% end %>
