@@ -1,12 +1,13 @@
-schedules#edit
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="card">
-        <div class="card-body">
-          <div class="card-title">
-            <%= @schedule.name %>
-          </div>
+        <div class="card-body p-3">
+          <%= form_with model: @schedule, class: "pb-3 d-flex" do |f| %>
+            <%= f.text_field :name, placeholder: "時間割名", class: "form-control mr-3" %>
+            <%= f.text_field :explanation, placeholder: "説明", class: "form-control mr-3" %>
+            <%= f.submit "確定", class: "btn btn-success" %>
+          <% end %>
 
           <table class="table table-bordered">
             <thead>

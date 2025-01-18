@@ -37,6 +37,15 @@ class Public::SchedulesController < ApplicationController
     end
   end
 
+  def update
+    schedule = Schedule.find(params[:id])
+    if schedule.update(schedule_params)
+      redirect_to edit_schedule_path(schedule), notice: "情報を更新しました"
+    else
+      redirect_to edit_schedule_path(schedule), alert: "情報の更新に失敗しました"
+    end
+  end
+
   private
   def schedule_params
     params.require(:schedule).permit(:name, :explanation)
