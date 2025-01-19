@@ -1,9 +1,17 @@
-<h1>lessons#new</h1>
-<%= form_with model: @lesson, url: schedule_lessons_path(@schedule) do |f| %>
-  <div>
-    <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, include_blank: "選択してください" %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="d-flex justify-content-center">授業の登録</h2>
+      <%= form_with model: @lesson, url: schedule_lessons_path(@schedule) do |f| %>
+        <div>
+          <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, {include_blank: "選択してください"}, {class: "form-control"} %>
+        </div>
+        <%= f.hidden_field :day_of_week, value: params[:day_of_week].to_i %>
+        <%= f.hidden_field :period, value: params[:period].to_i %>
+        <div class="pt-3 d-flex justify-content-center">
+          <%= f.submit "確定", class: "col-6 btn-sm btn-primary form-control" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <%= f.hidden_field :day_of_week, value: params[:day_of_week].to_i %>
-  <%= f.hidden_field :period, value: params[:period].to_i %>
-  <%= f.submit "確定" %>
-<% end %>
+</div>
