@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-6">
-      <h2 class="d-flex justify-content-center">授業の登録</h2>
+      <h2 class="pt-3 m-0 d-flex justify-content-center">授業の登録</h2>
       <%= form_with model: @lesson, url: schedule_lessons_path(@schedule) do |f| %>
-        <div>
+        <div class="pt-3">
           <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, {include_blank: "選択してください"}, {class: "form-control"} %>
         </div>
         <%= f.hidden_field :day_of_week, value: params[:day_of_week].to_i %>
