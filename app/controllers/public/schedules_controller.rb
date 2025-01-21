@@ -47,8 +47,8 @@ class Public::SchedulesController < ApplicationController
   end
 
   def destroy
-    subject = Subject.find(params[:id])
-    if subject.destroy
+    schedule = Schedule.find(params[:id])
+    if schedule.destroy
       redirect_to root_path, notice: "時間割を削除しました"
     else
       redirect_to root_path, alert: "時間割の削除に失敗しました"

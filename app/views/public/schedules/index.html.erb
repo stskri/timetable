@@ -17,7 +17,11 @@
               <td><strong><%= schedule_count %></strong></td>
               <td><%= link_to schedule.name, schedule_path(schedule) %></td>
               <td><%= schedule.explanation %></td>
-              <td><%= link_to "削除", schedule_path(schedule), method: :delete, data: { confirm: '本当に消しますか？'}, class: "btn-sm btn-danger" %></td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  <%= link_to "削除", schedule_path(schedule), method: :delete, data: { confirm: '本当に消しますか？'}, class: "col-6 btn btn-danger form-control" %>
+                </div>
+              </td>
             </tr>
             <% schedule_count += 1 %>
           <% end %>
