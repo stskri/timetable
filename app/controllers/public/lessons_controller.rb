@@ -19,7 +19,7 @@ class Public::LessonsController < ApplicationController
     lesson.subject_id = params[:lesson][:selected_subject_id].to_i
     lesson.schedule_id = schedule.id
     if lesson.save
-      redirect_to schedule_path(schedule), notice: '授業の登録に成功しました'
+      redirect_to edit_schedule_path(schedule), notice: '授業の登録に成功しました'
     else
       redirect_to request.referer, alert: '授業の登録に失敗しました'
     end
