@@ -8,6 +8,15 @@
 
 puts "seedを作成します。"
 
+
+# adminの設定
+Admin.find_or_create_by(id: 1) do |admin|
+  admin.email = 'a@a'
+  admin.password = 'aaaaaa'
+  admin.password_confirmation = 'aaaaaa'
+end
+# adminの設定ここまで
+
 subjects = [
   { id: 1, name: "国語", color: "#c32148" },
   { id: 2, name: "算数", color: "#4169e1" },

@@ -40,7 +40,7 @@ class Public::LessonsController < ApplicationController
     schedule = Schedule.find(params[:schedule_id])
     lesson = Lesson.find(params[:id])
     if lesson.destroy
-      redirect_to schedule_path(schedule)
+      redirect_to edit_schedule_path(schedule)
     end
   end
 
