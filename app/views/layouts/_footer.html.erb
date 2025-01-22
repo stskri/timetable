@@ -1,10 +1,14 @@
-<div class="d-flex justify-content-center pb-4" style="font-size: 30px;">
-  <% if user_signed_in? %>
-    <%= link_to root_path do %>
-      <i class="fa-solid fa-house"></i>
+<% if admin_signed_in? %>
+<p class="text-center">管理者ログイン中</p>
+<% else %>
+  <div class="d-flex justify-content-center pb-4" style="font-size: 30px;">
+    <% if user_signed_in? %>
+      <%= link_to root_path do %>
+        <i class="fa-solid fa-house"></i>
+      <% end %>
+      <%= link_to new_schedule_path do %>
+        <i class="pl-3 fa-regular fa-calendar-plus"></i>
+      <% end %>
     <% end %>
-    <%= link_to new_schedule_path do %>
-      <i class="pl-3 fa-regular fa-calendar-plus"></i>
-    <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

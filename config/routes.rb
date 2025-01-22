@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root :to => "subjects#index"
+    resources :subjects
   end
 end
