@@ -1,1 +1,37 @@
-<h1>admin/subjects#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>科目名</th>
+            <th>科目色</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% subject_count = 1 %>
+          <% @subjects.each do |subject| %>
+            <tr>
+              <td>
+                <strong><%= subject_count %></strong>
+              </td>
+              <td style="color: <%= subject.color %>;">
+                <%= subject.name %>
+                <% subject_count += 1 %>
+              </td>
+              <td style="color: <%= subject.color %>;">
+                <%= subject.color %>
+              </td>
+              <td class="d-flex justify-content-around">
+                <%= link_to "編集", edit_admin_subject_path(subject), class: "col-4 btn btn-sm btn-success form-control" %>
+                <%= link_to "削除", admin_subject_path(subject), method: :delete, data: { confirm: '本当に消しますか？'}, class: "col-4 btn btn-sm btn-danger form-control" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
