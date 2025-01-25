@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <div class="m-3">
+        <%= form_with model: @subject, url: admin_subjects_path, class: "d-flex align-items-center" do |f| %>
+          <%= f.text_field :name, placeholder: "科目名", class: "mr-3 form-control" %>
+          <%= f.color_field :color, class: "col-1 mr-3 form-control" %>
+          <%= f.submit "作成", class: "col-2 btn-sm btn-success form-control" %>
+        <% end %>
+      </div>
       <table class="table">
         <thead>
           <tr>

@@ -1,10 +1,20 @@
 class Admin::SubjectsController < ApplicationController
   def index
+    @subject = Subject.new
     @subjects = Subject.all
   end
 
   def edit
     @subject = Subject.find(params[:id])
+  end
+
+  def create
+    subject = Subject.new(subject_params)
+    if subject.save
+      redirect_to admin_subjects_path, notice: "科目を新規作成しました"
+    else
+      redirect_to admin_subjects_path, alert: "科目の新規作成に失敗しました"
+    end
   end
 
   def update
