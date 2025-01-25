@@ -16,7 +16,14 @@ class Admin::SubjectsController < ApplicationController
     end
   end
 
-
+  def destroy
+    subject = Subject.find(params[:id])
+    if subject.destroy
+      redirect_to admin_subjects_path, notice: "科目情報を削除しました"
+    else
+      redirect_to admin_subjects_path, alert: "科目情報の削除に失敗しました"
+    end
+  end
 
   private
   def subject_params
