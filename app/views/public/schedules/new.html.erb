@@ -4,10 +4,10 @@
       <h2 class="d-flex justify-content-center">時間割作成</h2>
       <%= form_with model: @schedule do |f| %>
         <div class="pt-3">
-          <%= f.text_field :name, autofocus: true, placeholder: "時間割名", class: "form-control" %>
+          <%= f.text_field :name, autofocus: true, placeholder: "時間割名(20文字以内)", class: "form-control" %>
         </div>
         <div class="pt-3">
-          <%= f.text_field :explanation, placeholder: "説明",  class: "form-control" %>
+          <%= f.text_field :explanation, placeholder: "説明(30文字以内)",  class: "form-control" %>
         </div>
         <div class="pt-3 d-flex justify-content-center">
           <%= f.submit "作成", class: "col-6 btn btn-primary form-control" %>
