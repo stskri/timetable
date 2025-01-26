@@ -32,8 +32,8 @@
                 <%= subject.color %>
               </td>
               <td class="d-flex justify-content-around">
-                <%= link_to "編集", edit_admin_subject_path(subject), class: "col-4 btn btn-sm btn-success form-control" %>
-                <%= link_to "削除", admin_subject_path(subject), method: :delete, data: { confirm: '本当に消しますか？'}, class: "col-4 btn btn-sm btn-danger form-control" %>
+                <%= link_to "編集", edit_admin_subject_path(subject), class: "col-4 d-flex align-items-center justify-content-center btn btn-sm btn-success form-control" %>
+                <%= link_to "削除", admin_subject_path(subject), method: :delete, data: { confirm: '本当に消しますか？'}, class: "col-4 d-flex align-items-center justify-content-center btn btn-sm btn-danger form-control" %>
               </td>
             </tr>
           <% end %>
