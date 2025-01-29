@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="m-4">
+        <%= form_with model: @subject, url: admin_subjects_path, class: "d-flex align-items-center" do |f| %>
+          <%= f.text_field :name, placeholder: "科目登録(15文字以内)", class: "mr-3 form-control" %>
+          <%= f.color_field :color, class: "col-1 mr-3 form-control" %>
+          <%= f.submit "作成", class: "col-2 btn-sm btn-success form-control" %>
+        <% end %>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>科目名</th>
+            <th>科目色</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% subject_count = 1 %>
+          <% @subjects.each do |subject| %>
+            <tr>
+              <td>
+                <strong><%= subject_count %></strong>
+              </td>
+              <td style="color: <%= subject.color %>;">
+                <%= subject.name %>
+                <% subject_count += 1 %>
+              </td>
+              <td style="color: <%= subject.color %>;">
+                <%= subject.color %>
+              </td>
+              <td class="d-flex justify-content-around">
+                <%= link_to "編集", edit_admin_subject_path(subject), class: "col-4 d-flex align-items-center justify-content-center btn btn-sm btn-success form-control" %>
+                <%= link_to "削除", admin_subject_path(subject), method: :delete, data: { confirm: '本当に消しますか？'}, class: "col-4 d-flex align-items-center justify-content-center btn btn-sm btn-danger form-control" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

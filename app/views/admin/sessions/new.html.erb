@@ -1,0 +1,32 @@
+<% if admin_signed_in? %>
+管理者ログイン中
+<% end %>
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="d-flex justify-content-center" style="color: #ff5733;">Log in</h2>
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
+        <% if user_signed_in? %>
+          <div class="text-center">
+            <span style="color: #ff5733;">ユーザーログイン中</span>
+          </div>
+        <% else %>
+          <div class="pt-3 field">
+            <% f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+          </div>
+
+          <div class="pt-3 field">
+            <% f.label :password %>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード",  class: "form-control" %>
+          </div>
+
+          <div class="pt-3 actions d-flex justify-content-center">
+            <%= f.submit "Log in", class: "col-6 btn btn-primary form-control" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

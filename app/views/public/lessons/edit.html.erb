@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="pt-3 m-0 d-flex justify-content-center">登録された授業の編集</h2>
+      <%= form_with model: @lesson, url: schedule_lesson_path(@schedule, @lesson), method: :patch do |f| %>
+        <div class="pt-3">
+          <%= f.select :selected_subject_id, @subjects.map { |a| [a.name, a.id] }, {include_blank: "選択してください", selected: @lesson.subject_id}, {class: "form-control"} %>
+        </div>
+        <div class="pt-3 d-flex justify-content-center">
+          <%= f.submit "確定", class: "col-6 btn-sm btn-primary form-control" %>
+        </div>
+      <% end %>
+      <div class="pt-3 d-flex justify-content-center">
+        <%= link_to "削除", schedule_lesson_path(@schedule, @lesson), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "col-6 btn-sm btn-danger form-control d-flex align-items-center justify-content-center" %>
+      </div>
+    </div>
+  </div>
+</div>

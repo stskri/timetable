@@ -1,0 +1,32 @@
+<% if admin_signed_in? %>
+  <div class="d-flex justify-content-center pt-4">
+    <div style="font-size: 30px;">
+      <%= link_to admin_subjects_path do %>
+        <i class="fa-solid fa-user-tie" style="color: #ff5733;"></i>
+      <% end %>
+      <%= link_to destroy_admin_session_path, method: :delete do %>
+        <i class="pl-3 fa-solid fa-right-from-bracket"></i>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="d-flex justify-content-center pt-4">
+    <div style="font-size: 30px;">
+      <% if user_signed_in? %>
+        <%= link_to root_path do %>
+          <i class="fa-regular fa-circle-user"></i>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="pl-3 fa-solid fa-right-from-bracket"></i>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_registration_path do %>
+          <i class="fa-solid fa-user-plus"></i>
+        <% end %>
+        <%= link_to new_user_session_path do %>
+          <i class="pl-3 fa-solid fa-right-to-bracket"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

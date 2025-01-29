@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/97d6fa8903.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header style="height: 10vh;">
+      <%= render "layouts/header" %>
+    </header>
+    <div class="col" style="flex-grow: 1; height: 80vh;">
+      <% flash.each do |key, message| %>
+        <div class="mb-0 alert alert-<%= key == 'notice' ? 'success' : 'danger' %> text-center">
+          <%= message %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <footer style="height: 10vh;">
+      <%= render "layouts/footer" %>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h2 class="pt-3 m-0 d-flex justify-content-center">登録された科目の編集</h2>
+      <%= form_with model: @subject, url: admin_subject_path(@subject), method: :patch do |f| %>
+        <div class="container">
+          <div class="row">
+            <div class="mx-auto">
+              <table class="m-0 table table-borderless">
+                <tbody>
+                  <tr>
+                    <td class="p-0 pt-3">
+                      <%= f.text_field :name, placeholder: "#{@subject.name}", class: "form-control" %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="p-0 pt-3">
+                      <%= f.color_field :color, class: "form-control" %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="pt-3 d-flex justify-content-center">
+          <%= f.submit "確定", class: "col-6 btn btn-success form-control" %>
+        </div>
+      <% end %>
+      <div class="pt-3 d-flex justify-content-center">
+        <%= link_to "削除", admin_subject_path(@subject), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "col-6 btn-sm btn-danger form-control d-flex align-items-center justify-content-center" %>
+      </div>
+    </div>
+  </div>
+</div>
