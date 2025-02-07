@@ -15,13 +15,13 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "schedules#index"
     get 'users' => 'schedules#dummy' # 新規登録画面で登録失敗した際にURLが/usersとなり、リロードするとRouting Errorが表示されてしまうため、controller側で redirect_to new_user_registration_path を用意している
-    resources :schedules do
-      resources :lessons
+    resources :schedules, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
+      resources :lessons, only: [:new, :edit, :create, :update, :destroy]
     end
   end
 
   namespace :admin do
     root :to => "subjects#index"
-    resources :subjects
+    resources :subjects, only: [:index, :edit, :create, :update, :destroy]
   end
 end
